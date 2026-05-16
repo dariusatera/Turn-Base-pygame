@@ -1,8 +1,6 @@
-<img width="1004" height="728" alt="Screenshot 2026-05-16 232844" src="https://github.com/user-attachments/assets/2f0727d6-e5a3-46ec-a53f-1fb06a506663" />
-<img width="997" height="733" alt="Screenshot 2026-05-16 232910" src="https://github.com/user-attachments/assets/a9dc8652-963e-473b-b763-c98c06dde1d0" />
-# ⚔️ SABRR.. NANTI JUGA NYERANG — Turn-Based RPG Dungeon Crawler
+<img width="990" height="733" alt="Screenshot 2026-05-16 232917" src="https://github.com/user-attachments/assets/72da5508-7028-4f9c-844e-ba54dd270e62" /># ⚔️ SABRR.. NANTI JUGA NYERANG — Turn-Based RPG Dungeon Crawler
 
-![Start Screen](Screenshot%202026-05-16%20232844.png)
+![Start Screen]<img width="1004" height="728" alt="Screenshot 2026-05-16 232844" src="https://github.com/user-attachments/assets/2f0727d6-e5a3-46ec-a53f-1fb06a506663" />
 
 **SABRR.. NANTI JUGA NYERANG** adalah sebuah proyek eksperimental sekaligu sebagai project akademis ujian akhir saya, game bergenre *Turn-Based Strategy RPG* yang dibangun menggunakan bahasa pemrograman **Python** dan *library* **Pygame**. Game ini berfokus pada manajemen sumber daya *party*, strategi pemilihan aksi, dan ketahanan (*survival*) di dalam penjelajahan sebuah *dungeon* yang berbahaya.
 
@@ -39,12 +37,13 @@ Game ini menggunakan estetika visual *dark pixel art* yang didukung dengan tipog
 
 | Layar Selamat Datang | Layar Progres Tahapan |
 |---|---|
-| ![Welcome Screen](Screenshot%202026-05-16%20232910.png) | ![Stage 1 Screen](Screenshot%202026-05-16%20232853.png) |
+| ![Welcome Screen] <img alt="Screenshot 2026-05-16 232910" src="https://github.com/user-attachments/assets/81fef080-2b18-4d9a-b1ea-cb4bd3a73396" /> | ![Stage 1 Screen] <img alt="Screenshot 2026-05-16 232853" src="https://github.com/user-attachments/assets/39011d33-e2b4-4de1-91ee-6eadd3a40143" /> |
 
 ### ⚔️ Antarmuka Pertarungan (Battle UI & Gameplay)
 Antarmuka pertarungan dirancang seefisien mungkin untuk memberikan kejelasan informasi *state* permainan secara *real-time* kepada pemain.
 
-![Battle Gameplay](Screenshot%202026-05-16%20232917.png)
+![Battle Gameplay] <img alt="Screenshot 2026-05-16 232917" src="https://github.com/user-attachments/assets/4afeea41-0641-4844-9413-8a767ac1c2fd" />
+
 
 * **Manajemen Informasi:** Indikator giliran aktif (*Turn Indicator*) dan jumlah Energi ditampilkan jelas di sisi atas layar.
 * **Sistem Navigasi:** Pilihan aksi (**PUKUL**, **SKILL**, **CORE**) diletakkan di sudut kanan bawah menggunakan kontrol yang intuitif.
