@@ -1,0 +1,227 @@
+import pygame
+import sys
+from config import WIDTH, HEIGHT, WHITE, BLACK, GREEN # Impor dari config.py
+from LogikaPertarungan import Slayer, Mage, Healer, Monster, party, stages, turn_order
+pygame.init()
+
+
+# Fungsi untuk menampilkan pertarungan 
+def Slayer(screen):
+    slayer_pos = (WIDTH // 8, HEIGHT // 2 + 200)  
+    slayer_radius = 40
+    SLAYER_COLOR = (WHITE)
+    
+    bar_pos = (WIDTH // 8 + 20, HEIGHT // 2 + 200 + slayer_radius + 10)  # Posisi bar HP
+    bar_hihght = 20
+    bar_width = 40
+    
+
+    running = True
+    while running:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False # Keluar dari loop dan program
+
+        screen.fill(BLACK)
+        pygame.draw.rect(screen, WHITE, (bar_pos[0], bar_pos[1], bar_width, bar_hihght))  # Menggambar bar HP
+        pygame.draw.circle(screen, SLAYER_COLOR, slayer_pos, slayer_radius)
+        pygame.display.update()  # <-- Pindahkan ke dalam loop
+
+    return "QUIT"
+
+
+
+def Mage(screen):
+    mage_pos = (WIDTH // 8 + 80, HEIGHT // 2 + 200)  
+    mage_radius = 40
+    MAGE_COLOR = (WHITE)
+
+    running = True
+    while running:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False # Keluar dari loop dan program
+
+        screen.fill(BLACK)
+        pygame.draw.circle(screen, MAGE_COLOR, mage_pos, mage_radius)
+        pygame.display.update()  # <-- Pindahkan ke dalam loop
+
+    return "QUIT"
+
+
+
+def Healer(screen):
+    healer_pos = (WIDTH // 8 + 160, HEIGHT // 2 + 200)  
+    healer_radius = 40
+    HEALER_COLOR = (WHITE)
+
+    running = True
+    while running:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False # Keluar dari loop dan program
+
+        screen.fill(BLACK)
+        pygame.draw.circle(screen, HEALER_COLOR, healer_pos, healer_radius)
+        pygame.display.update()  # <-- Pindahkan ke dalam loop
+        
+
+
+
+    return "QUIT"
+
+
+
+
+
+def all_party(screen):
+
+    positions = [
+        (WIDTH // 8, HEIGHT // 2 + 200),
+        (WIDTH // 8 + 100, HEIGHT // 2 + 200),
+        (WIDTH // 8 + 200, HEIGHT // 2 + 200)
+    ]
+    radius = 40
+    
+   
+    
+    positions2 = [
+        (WIDTH // 8 - 40, HEIGHT // 2 + 200  + radius + 10)
+    ]
+
+    running = True
+    while running:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False
+
+        screen.fill(BLACK)
+        for idx, character in enumerate(party): # enumerate untuk mendapatkan indeks party atau barisan party dari file LogikaPertarungan.py
+            pygame.draw.circle(screen, WHITE, positions[idx], radius) # Menggambar lingkaran untuk setiap karakter
+            
+            bar_pos = (positions[idx][0] - 40, positions[idx][1] + radius + 10)
+            hp_ratio = character.hp / party.MXhp if party.MXhp > 0 else 0
+            bar_width = int(80 * hp_ratio)
+            pygame.draw.rect(screen, GREEN, (positions2[0][0], positions2[0][1], bar_width, 10))  #   
+        pygame.display.update()
+
+    return "QUIT"
+
+
+
+
+
+
+
+
+jika ingin ganti ke png 
+
+def all_party(screen):
+    from LogikaPertarungan import party
+
+    # Load gambar PNG untuk masing-masing karakter
+    slayer_img = pygame.image.load("assets/slayer.png").convert_alpha()
+    mage_img = pygame.image.load("assets/mage.png").convert_alpha()
+    healer_img = pygame.image.load("assets/healer.png").convert_alpha()
+    images = [slayer_img, mage_img, healer_img]
+
+    positions = [
+        (WIDTH // 10, HEIGHT // 2 + 200),
+        (WIDTH // 10 + 90, HEIGHT // 2 + 200),
+        (WIDTH // 10 + 180, HEIGHT // 2 + 200)
+    ]
+    radius = 40
+
+    running = True
+    while running:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False
+
+        screen.fill(BLACK)
+        for idx, character in enumerate(party):
+            # Ganti lingkaran dengan gambar PNG
+            img = images[idx]
+            img_rect = img.get_rect(center=positions[idx])
+            screen.blit(img, img_rect)
+
+            # Bar HP tetap di bawah gambar
+            bar_x = positions[idx][0] - 40
+            bar_y = positions[idx][1] + radius + 20
+            draw_hp_bar(screen, character, bar_x, bar_y, 80, 10)
+        pygame.display.update()
+
+    return "QUIT"
+
+
+
+
+                elif player_action_mode is not None and event.type == pygame.MOUSEBUTTONDOWN:
+                # Jika karakter aktif adalah Healer, kita punya dua opsi:
+                # - Jika mode aksi adalah "skill", targetnya berasal dari party (untuk healing).
+                # - Jika mode aksi adalah "pukul" atau "ulti", maka targetnya dari musuh.
+                if isinstance(current_turn, Healer):
+                    if player_action_mode == "skill":
+                        target_chosen = None
+                        # Pilih target dari party untuk healing
+                        for idx, member in enumerate(party):
+                            if not member.is_alive():
+                                continue
+                            party_rect = character_imgs[idx].get_rect(center=positions[idx])
+                            if party_rect.collidepoint(event.pos):
+                                target_chosen = member
+                                break
+                        if target_chosen:
+                            print(f"{current_turn.nama} menyembuhkan {target_chosen.nama}!")
+                            current_turn.Skill(target_chosen)
+                            player_action_mode = None
+                            current_turn_index += 1
+                    elif player_action_mode == "pukul" or player_action_mode == "ulti":
+                        target_chosen = None
+                        chosen_index = None
+                        # Pilih target dari monster untuk serangan
+                        for idx, monster in enumerate(monsters):
+                            if not monster.is_alive():
+                                continue
+                            monster_rect = monster_imgs[idx].get_rect(center=monster_positions[idx])
+                            if monster_rect.collidepoint(event.pos):
+                                target_chosen = monster
+                                chosen_index = idx
+                                break
+                        if target_chosen:
+                            if player_action_mode == "pukul":
+                                print(f"{current_turn.nama} melakukan Basic Attack pada {target_chosen.nama}!")
+                                current_turn.BasicAttack(target_chosen)
+                            elif player_action_mode == "ulti":
+                                print(f"{current_turn.nama} menggunakan Ultimate pada {target_chosen.nama}!")
+                                current_turn.Ultimate(target_chosen)
+                            player_action_mode = None
+                            current_turn_index += 1
+                else:
+                    # Untuk karakter non-Healer, target biasa berasal dari musuh.
+                    target_chosen = None
+                    chosen_index = None
+                    for idx, monster in enumerate(monsters):
+                        if not monster.is_alive():
+                            continue
+                        monster_rect = monster_imgs[idx].get_rect(center=monster_positions[idx])
+                        if monster_rect.collidepoint(event.pos):
+                            target_chosen = monster
+                            chosen_index = idx
+                            break
+                    if target_chosen:
+                        if player_action_mode == "pukul":
+                            print(f"{current_turn.nama} melakukan Basic Attack pada {target_chosen.nama}!")
+                            current_turn.BasicAttack(target_chosen)
+                        elif player_action_mode == "skill":
+                            if isinstance(current_turn, Mage):
+                                print(f"{current_turn.nama} menggunakan Skill pada {target_chosen.nama}!")
+                                current_turn.Skill(chosen_index, monsters)
+                            else:
+                                print(f"{current_turn.nama} menggunakan Skill pada {target_chosen.nama}!")
+                                current_turn.Skill(target_chosen)
+                        elif player_action_mode == "ulti":
+                            print(f"{current_turn.nama} menggunakan Ultimate pada {target_chosen.nama}!")
+                            current_turn.Ultimate(target_chosen)
+                        player_action_mode = None
+                        current_turn_index += 1

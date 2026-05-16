@@ -1,0 +1,24 @@
+Mekanisme pertarungan:
+    Player akan langsung diberikan 3 member party untuk di jalankan
+    Player di paksa memasuki dungeon untuk mengalahkan semua monster
+    Hadapi semua stage dan kalahkan semua monster yang ada dengan 3 member party yang di berikan
+    Setiap HP party yang berkurang tidak akan diriset saat pergantian stage
+    pertahankan semua member hingga bos terakhir di stage terakhir
+
+    Scaling Basic Attack semua member party sama
+
+Slayer:
+    -Serangan single target dengan damage besar
+    -Skill memberikan damage tinggi (single target)
+    -CORE memberikan damage sangat tinggi (single target)
+
+Mage:
+    -Skill dan CORE memberikan AOE damage
+    -Skill memberikan damge tinggi ke target utama dan 50% damage pada target sekitarnya (AOE)
+    -CORE memberikan damge sangat tinggi ke seluruh target (AOE)
+
+Healer:
+    -Memberikan penyembuhan pada party
+    -Skill memberikan single healing untuk party
+    -CORE memberikan heal kepada seluruh party
+

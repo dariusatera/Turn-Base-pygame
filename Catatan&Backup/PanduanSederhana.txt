@@ -1,0 +1,13 @@
+#ini code untuk menggambar bar / Persegi panjang
+
+
+
+#kode untuk setting frame rate
+clock = pygame.time.Clock(60)
+
+pygame.rect(x,y,width,hight) >> untuk mengatur persegi panjang
+pygame.draw.rect(x,y,width,hight) >> untuk menggambar persegi panjang
+
+screen.blit(image, (x, y)) >> untuk menggambar image terserah dan bisa melalu fil,png,atau fungsi
+
+
