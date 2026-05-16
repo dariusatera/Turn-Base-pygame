@@ -2,7 +2,7 @@
 
 ![Start Screen](Screenshot%202026-05-16%20232844.png)
 
-**SABRR.. NANTI JUGA NYERANG** adalah sebuah proyek eksperimental game bergenre *Turn-Based Strategy RPG* yang dibangun menggunakan bahasa pemrograman **Python** dan *library* **Pygame**. Game ini berfokus pada manajemen sumber daya *party*, strategi pemilihan aksi, dan ketahanan (*survival*) di dalam penjelajahan sebuah *dungeon* yang berbahaya.
+**SABRR.. NANTI JUGA NYERANG** adalah sebuah proyek eksperimental sekaligu sebagai project akademis ujian akhir saya, game bergenre *Turn-Based Strategy RPG* yang dibangun menggunakan bahasa pemrograman **Python** dan *library* **Pygame**. Game ini berfokus pada manajemen sumber daya *party*, strategi pemilihan aksi, dan ketahanan (*survival*) di dalam penjelajahan sebuah *dungeon* yang berbahaya.
 
 ---
 
